@@ -9,6 +9,9 @@ Content-Type: application/json
 
 {
     "email":"belele@gmail.com",
-    "pasword":"belele"
+    "password":"belele"
 }
-###
+
+### Read one user
+# @name readOneUser
+GET {{baseUrl}}/user/123

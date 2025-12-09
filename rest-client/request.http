@@ -10,7 +10,7 @@ Content-Type: application/json
 
 {
     "email":"tania@gmail.com",
-    "password":"tania"
+    "password":"tania1"
 }
 
 ### Read one user
@@ -39,3 +39,17 @@ Authorization: Bearer {{jwtToken}}
   "name": "tania",
   "email":"tania@gmail.com"
 }
+### Update user Password
+# @name updateUser
+PATCH {{baseUrl}}/user/me/password
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+  "currentPassword": "tania",
+  "newPassword":"tania1"
+}
+### Read one user 
+# @name readOneUser
+GET {{baseUrl}}/user/me
+Authorization: Bearer {{jwtToken}}

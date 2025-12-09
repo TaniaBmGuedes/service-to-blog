@@ -1,4 +1,5 @@
 @baseUrl = http://localhost:3000
+@jwtToken = {{authLogin.response.body.accessToken}}
 
 GET {{baseUrl}}
 
@@ -12,6 +13,10 @@ Content-Type: application/json
     "password":"belele"
 }
 
+### Read one user
+# @name readOneUser
+GET {{baseUrl}}/user/123
+Authorization: Bearer {{jwtToken}}
 
 ### Create User 
 # @name createUser

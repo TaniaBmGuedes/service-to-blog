@@ -5,6 +5,7 @@ import { UserModule } from 'src/user/user.module';
 import { CommonModule } from 'src/common/common.module';
 import { JwtModule } from '@nestjs/jwt';
 import * as jwt from 'jsonwebtoken';
+import { JwtStrategy } from './jwt.strategy';
 
 @Module({
   imports: [
@@ -30,7 +31,7 @@ import * as jwt from 'jsonwebtoken';
     }),
   ],
   controllers: [AuthController],
-  providers: [AuthService],
+  providers: [AuthService, JwtStrategy],
   exports: [],
 })
 export class AuthModule {}

@@ -21,5 +21,6 @@ export class CreatePostDto {
 
   @IsOptional()
   @IsUrl({ require_tld: false })
+  @IsUrl({ require_tld: false }, { message: 'image url must be a valid URL' }) // Top level domain proíbe localhost e IP
   coverImageUrl?: string;
 }

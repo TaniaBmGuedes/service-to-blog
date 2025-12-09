@@ -1,18 +1,17 @@
 @baseUrl = http://localhost:3000
 @jwtToken = {{authLogin.response.body.accessToken}}
 
-
 @postUuid = {{createPostOwned.response.body.id}}
 @postSlug = {{createPostOwned.response.body.slug}}
 @imagePath = {{uploadImage.response.body.url}}
 @imageUrl = {{baseUrl}}{{imagePath}}
 
-
+@userNameForTesting = Tania
+@userEmailForTesting = tania@email.com
+@userPasswordForTesting = 123456
+@userNewPasswordForTesting = 123456
 
 # AUTH ########################################################################
-
-
-GET {{baseUrl}}
 
 ### Auth login
 # @name authLogin
@@ -20,24 +19,21 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email":"tania@gmail.com",
-    "password":"tania1"
+  "email": "{{userEmailForTesting}}",
+  "password": "{{userPasswordForTesting}}"
 }
 
-### Read one user
-# @name readOneUser
-GET {{baseUrl}}/user/123
-Authorization: Bearer {{jwtToken}}
+# USER ########################################################################
 
-### Create User 
+### Create user
 # @name createUser
 POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-    "email":"tania@gmail.com",
-    "password":"tania",
-    "name":"tania"
+  "name": "{{userNameForTesting}}",
+  "email": "{{userEmailForTesting}}",
+  "password": "{{userPasswordForTesting}}"
 }
 
 ### Update user
@@ -47,71 +43,78 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "name": "tania",
-  "email":"tania@gmail.com"
+  "name": "{{userNameForTesting}} Updated",
+  "email": "{{userEmailForTesting}}"
 }
-### Update user Password
-# @name updateUser
+
+### Update user password
+# @name updateUserPassword
 PATCH {{baseUrl}}/user/me/password
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "currentPassword": "tania",
-  "newPassword":"tania1"
+  "currentPassword": "{{userPasswordForTesting}}",
+  "newPassword": "{{userNewPasswordForTesting}}"
 }
-### Read one user 
+
+### Read one user
 # @name readOneUser
 GET {{baseUrl}}/user/me
 Authorization: Bearer {{jwtToken}}
 
+### Delete one user
+# @name deleteOneUser
+DELETE {{baseUrl}}/user/me
+Authorization: Bearer {{jwtToken}}
 
 # POST ########################################################################
 
-### Create post owned
+### Create owned post
 # @name createPostOwned
 POST {{baseUrl}}/post/me
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "title": "Post title ",
-  "excerpt": "post excerpt",
-  "content": "post content"
+  "title": "Post Title",
+  "excerpt": "Post Excerpt",
+  "content": "Content",
+  "coverImageUrl": "http://localhost"
 }
 
-### Read all post public
+### Read all public posts
 # @name readAllPostPublic
 GET {{baseUrl}}/post/
 
-### Read one post public
+### Read one public post
 # @name readOnePostPublic
 GET {{baseUrl}}/post/{{postSlug}}
 
-### Read all post owned
+### Read all owned posts
 # @name readAllPostOwned
 GET {{baseUrl}}/post/me
 Authorization: Bearer {{jwtToken}}
 
-### Read one post owned
+### Read one owned post
 # @name readOnePostOwned
 GET {{baseUrl}}/post/me/{{postUuid}}
 Authorization: Bearer {{jwtToken}}
 
-### Update one post owned
+### Update one owned post
 # @name updateOnePostOwned
 PATCH {{baseUrl}}/post/me/{{postUuid}}
 Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "title": "new -   post title",
-  "excerpt": "new - post excerpt",
-  "content": "new - post content",
+  "title": "PUBLISHED Post Title",
+  "excerpt": "NEW - Excerpt",
+  "content": "NEW - Content",
   "published": true
 }
 
-### Delete one post owned
+### Delete one owned post
 # @name deleteOnePostOwned
 DELETE {{baseUrl}}/post/me/{{postUuid}}
 Authorization: Bearer {{jwtToken}}
@@ -125,13 +128,14 @@ Authorization: Bearer {{jwtToken}}
 Content-Type: multipart/form-data; boundary=----BryenFormBoundary
 
 ------BryenFormBoundary
-Content-Disposition: form-data; name="file"; filename="exemplo.png"
+Content-Disposition: form-data; name="file"; filename="image.png"
 Content-Type: image/png
 
-< ../dev/images/sample-image.jpeg
+< ../dev/images/image.gif
 ------BryenFormBoundary--
 
 ### Read Image
 # @name readImage
 GET {{imageUrl}}
 
+###############################################################################

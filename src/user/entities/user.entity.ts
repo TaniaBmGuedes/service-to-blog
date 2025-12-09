@@ -28,4 +28,6 @@ export class User {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  //one to Man <- post
 }

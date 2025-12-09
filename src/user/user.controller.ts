@@ -9,7 +9,6 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { ConfigService } from '@nestjs/config';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import type { AuthenticatedRequest } from 'src/types/authenticated-request';
@@ -19,10 +18,7 @@ import { UpdatePasswordDto } from './dto/update-passoword.dto';
 
 @Controller('user')
 export class UserController {
-  constructor(
-    private readonly configService: ConfigService,
-    private readonly userService: UserService,
-  ) {}
+  constructor(private readonly userService: UserService) {}
 
   @UseGuards(JwtAuthGuard)
   @Patch('me/password')

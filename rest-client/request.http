@@ -9,8 +9,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-    "email":"belele@gmail.com",
-    "password":"belele"
+    "email":"tania@gmail.com",
+    "password":"tania"
 }
 
 ### Read one user
@@ -24,7 +24,18 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-    "email":"belele@gmail.com",
-    "password":"belele",
-    "name":"belele"
+    "email":"tania@gmail.com",
+    "password":"tania",
+    "name":"tania"
+}
+
+### Update user
+# @name updateUser
+PATCH {{baseUrl}}/user/me
+Content-Type: application/json
+Authorization: Bearer {{jwtToken}}
+
+{
+  "name": "tania",
+  "email":"tania@gmail.com"
 }

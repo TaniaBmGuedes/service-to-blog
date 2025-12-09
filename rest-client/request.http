@@ -12,6 +12,14 @@ Content-Type: application/json
     "password":"belele"
 }
 
-### Read one user
-# @name readOneUser
-GET {{baseUrl}}/user/123
+
+### Create User 
+# @name createUser
+POST {{baseUrl}}/user
+Content-Type: application/json
+
+{
+    "email":"belele@gmail.com",
+    "password":"belele",
+    "name":"belele"
+}

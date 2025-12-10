@@ -6,8 +6,8 @@
 @imagePath = {{uploadImage.response.body.url}}
 @imageUrl = {{baseUrl}}{{imagePath}}
 
-@userNameForTesting = Tania
-@userEmailForTesting = tania@gmail.com
+@userNameForTesting = Tania Guedes
+@userEmailForTesting = taniaguedes@gmail.com
 @userPasswordForTesting = 123456
 @userNewPasswordForTesting = 123456
 
@@ -19,8 +19,8 @@ POST {{baseUrl}}/auth/login
 Content-Type: application/json
 
 {
-  "email": "{{userEmailForTesting}}",
-  "password": "{{userPasswordForTesting}}"
+  "email": "taniaguedes@gmail.com",
+  "password": "123456"
 }
 
 # USER ########################################################################
@@ -31,9 +31,9 @@ POST {{baseUrl}}/user
 Content-Type: application/json
 
 {
-  "name": "{{userNameForTesting}}",
-  "email": "{{userEmailForTesting}}",
-  "password": "{{userPasswordForTesting}}"
+  "name": "tania guedes",
+  "email": "taniaguedes@gmail.com",
+  "password": "123456"
 }
 
 ### Update user
@@ -43,7 +43,7 @@ Content-Type: application/json
 Authorization: Bearer {{jwtToken}}
 
 {
-  "name": "{{userNameForTesting}} Updated",
+  "name": "{{userNameForTesting}}",
   "email": "{{userEmailForTesting}}"
 }
 

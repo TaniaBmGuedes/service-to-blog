@@ -1,4 +1,4 @@
-@baseUrl = http://localhost:3000
+@baseUrl = http://localhost:3001
 @jwtToken = {{authLogin.response.body.accessToken}}
 
 @postUuid = {{createPostOwned.response.body.id}}
@@ -131,7 +131,7 @@ Content-Type: multipart/form-data; boundary=----BryenFormBoundary
 Content-Disposition: form-data; name="file"; filename="image.png"
 Content-Type: image/png
 
-< ../dev/images/image.gif
+< ../dev/images/image.png
 ------BryenFormBoundary--
 
 ### Read Image

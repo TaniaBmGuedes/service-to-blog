@@ -7,7 +7,7 @@
 @imageUrl = {{baseUrl}}{{imagePath}}
 
 @userNameForTesting = Tania
-@userEmailForTesting = tania@email.com
+@userEmailForTesting = tania@gmail.com
 @userPasswordForTesting = 123456
 @userNewPasswordForTesting = 123456
 
